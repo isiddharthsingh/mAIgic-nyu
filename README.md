@@ -106,7 +106,7 @@ workflows:
 This configuration ensures that every commit automatically goes through testing and static analysis.
 
 ### View CircleCI Status:
-The latest CircleCI build can be viewed [here](https://app.circleci.com/pipelines/circleci/L7kpZ5X2tZyEgUBhR4SB2j).
+The latest CircleCI build can be viewed [here](https://app.circleci.com/pipelines/circleci/L7kpZ5X2tZyEgUBhR4SB2j/NxWta8V9bEwRzTNu9Vzc3c/9/workflows/be567b6f-0c9c-41c8-91f7-e4789784b41f).
 
 ---
 
