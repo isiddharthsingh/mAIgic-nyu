@@ -27,10 +27,13 @@ pip install pytest ruff mypy
 
 Alternatively, if using the `uv` package manager:
 ```bash
-uv init
+uv sync
 ```
 
-This command will install the necessary dependencies from the `pyproject.toml` file.
+The above command will create a virtual environment `.venv` and install all the dependencies from the `uv.lock` file. Activate the environment by executing
+```bash
+source ./.venv/bin/activate
+```
 
 ---
 
