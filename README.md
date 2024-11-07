@@ -1,7 +1,9 @@
 # mAIgic
 
 ## Project Description
-**mAIgic** is a project focused on setting up testing, static analysis, and continuous integration (CI) using tools such as `pytest`, `ruff`, `mypy`, and CircleCI. It aims to automate quality checks, ensuring code correctness and adherence to best practices.
+**mAIgic** is an AI-powered assistant designed to enhance productivity and organization by tracking messages and important information across multiple platforms. It identifies and reminds users about follow-ups, ensuring timely responses and efficient information management. With intelligent search capabilities, mAIgic enables users to easily locate conversations and details tied to specific individuals or tasks.
+
+The project supports popular platforms such as Slack, Trello, Gmail, and Google Chat, providing seamless follow-up tracking, reminders, and contextual search across these communication channels. This integration leverages AI to automate the reminder process, making it easier to stay on top of essential follow-ups and tasks.
 
 ## Features
 - Unit testing with `pytest`
@@ -20,10 +22,9 @@ cd mAIgic
 ```
 
 ### 2. Install Dependencies
-This project uses `pytest`, `ruff`, and `mypy`. Install them using `pip`:
-```bash
-pip install pytest ruff mypy
-```
+  ```bash
+    pip install -r requirements.txt
+  ```
 
 Alternatively, if using the `uv` package manager:
 ```bash
@@ -72,38 +73,7 @@ The project is integrated with CircleCI for continuous integration. Every push t
 2. **Run tests**: Executes all tests in the `tests/` folder using `pytest`.
 3. **Run static analysis**: Runs `ruff` for linting and `mypy` for type checking.
 
-### CircleCI Configuration in `.circleci/config.yml`:
-```yaml
-version: 2.1
 
-jobs:
-  test:
-    docker:
-      - image: circleci/python:3.8
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: |
-            pip install pytest ruff mypy
-      - run:
-          name: Run pytest tests
-          command: pytest tests
-      - run:
-          name: Run ruff for linting
-          command: ruff check .
-      - run:
-          name: Run mypy for type checking
-          command: mypy .
-
-workflows:
-  version: 2
-  test_and_static_analysis:
-    jobs:
-      - test
-```
-
-This configuration ensures that every commit automatically goes through testing and static analysis.
 
 ### View CircleCI Status:
 The latest CircleCI build can be viewed [here](https://app.circleci.com/pipelines/circleci/L7kpZ5X2tZyEgUBhR4SB2j/NxWta8V9bEwRzTNu9Vzc3c/9/workflows/be567b6f-0c9c-41c8-91f7-e4789784b41f).
