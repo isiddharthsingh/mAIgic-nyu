@@ -7,9 +7,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install uv
           command: |
-            pip install pytest ruff mypy uv
+            curl -sSL https://install.uv.tools | bash
+      - run:
+          name: Install dependencies
+          command: uv init  # Installs dependencies from pyproject.toml
       - run:
           name: Run pytest tests
           command: pytest tests
