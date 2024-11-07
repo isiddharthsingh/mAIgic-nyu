@@ -3,13 +3,13 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.10
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            pip install pytest ruff mypy
+            pip install pytest ruff mypy uv
       - run:
           name: Run pytest tests
           command: pytest tests
