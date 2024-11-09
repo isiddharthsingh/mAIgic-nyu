@@ -1,4 +1,5 @@
 import os
+import json
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -8,31 +9,37 @@ load_dotenv()
 # Initialize OpenAI client with the API key
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-# Improved prompt template to intelligently relate tasks and use specific dates
+# Initial base prompt template
 base_prompt = """
-Please analyze the following message and identify any tasks along with their deadlines.
-The date of this message is {}. Convert any relative deadlines (e.g., "next Friday") into specific dates based on this date.
-If tasks are related, structure each task so that any subsequent related tasks clearly reference prior tasks. Use phrases like "Continue with..." or "Follow up on..." to establish relationships.
+You are analyzing an email thread. Below is the existing context of tasks and deadlines in this thread:
+{}
 
-List each task and deadline as separate entries in this format:
+Current message received on {}:
+{}
 
-Task 1:
+Please list any new tasks or updates in the format:
+
+Task:
 - Description: <task description>
 - Deadline: <specific date in YYYY-MM-DD format>
 
-Task 2:
-- Description: <task description, indicating it is related to Task 1 if applicable>
-- Deadline: <specific date in YYYY-MM-DD format>
-
-If there are no tasks or deadlines, respond with "No tasks found." 
-If a task does not have a specific deadline, list it as "Deadline: None."
-
-Message: '{}'
+Update the context with any modified tasks or new deadlines, and reference prior tasks if applicable.
+If no new tasks or updates are found, respond with "No new tasks found."
 """
 
-# Function to get structured tasks and deadlines with intelligent referencing
-def get_task_and_deadline(message, message_date):
-    formatted_prompt = base_prompt.format(message_date, message)
+# JSON structure to hold task data for an email thread
+task_data = {
+    "thread_id": "unique_thread_id",
+    "messages": []
+}
+
+# Function to process each message and update JSON
+def process_thread_message(message, message_date, task_data):
+    # Format the prompt with current task context and new message
+    current_task_summary = json.dumps(task_data["messages"], indent=2)  # Pretty-print JSON for prompt clarity
+    formatted_prompt = base_prompt.format(current_task_summary, message_date, message)
+    
+    # Call the OpenAI API
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -40,10 +47,28 @@ def get_task_and_deadline(message, message_date):
             {"role": "user", "content": formatted_prompt}
         ]
     )
-    return completion.choices[0].message.content
+    
+    # Parse and update the JSON with new tasks from the current message
+    response_content = completion.choices[0].message.content
+    new_message_data = {
+        "message_id": len(task_data["messages"]) + 1,
+        "date": message_date,
+        "content": message,
+        "tasks": response_content
+    }
+    task_data["messages"].append(new_message_data)  # Update JSON with new message data
+    return response_content, task_data
 
-# Example usage
-user_message = "Complete the project report by next Friday and then review it with the team by Tuesday."
-message_date = "2024-11-09"  # Replace with the actual date of the message
-response = get_task_and_deadline(user_message, message_date)
-print(response)
+# Example usage with multiple messages in a thread
+message_1 = "Complete the project report by next Friday and schedule a team meeting by Tuesday."
+message_date_1 = "2024-11-09"
+response_1, task_data = process_thread_message(message_1, message_date_1, task_data)
+print("Response 1:\n", response_1)
+
+message_2 = "Reschedule the team meeting to Wednesday and ensure the report includes financial analysis."
+message_date_2 = "2024-11-10"
+response_2, task_data = process_thread_message(message_2, message_date_2, task_data)
+print("\nResponse 2:\n", response_2)
+
+# Output the JSON structure as a final record of the thread
+print("\nFinal Task Data JSON:\n", json.dumps(task_data, indent=2))
