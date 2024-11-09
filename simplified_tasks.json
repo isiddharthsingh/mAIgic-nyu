@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "task_id": 1,
+      "task": "Complete the project report",
+      "deadline": "2024-11-15"
+    },
+    {
+      "task_id": 2,
+      "task": "Schedule a team meeting",
+      "deadline": "2024-11-12"
+    },
+    {
+      "task_id": 3,
+      "task": "Reschedule the team meeting",
+      "deadline": "2024-11-13 (Wednesday)"
+    },
+    {
+      "task_id": 4,
+      "task": "Ensure the report includes financial analysis",
+      "deadline": "2024-11-10 (same day as the message date)"
+    }
+  ]
+}
