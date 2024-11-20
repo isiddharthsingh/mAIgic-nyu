@@ -1,32 +1,22 @@
 [
     {
         "thread_id": 1,
-        "message": "Complete the project report by next Friday and schedule a team meeting by Tuesday.",
-        "message_date": "2024-11-09"
+        "message": "Complete the project report by next Friday.",
+        "message_date": "2024-12-01"
     },
     {
         "thread_id": 1,
-        "message": "Reschedule the team meeting to Wednesday and ensure the report includes financial analysis.",
-        "message_date": "2024-11-10"
+        "message": "Update the deadline for the project report to next Monday.",
+        "message_date": "2024-12-02"
     },
     {
         "thread_id": 2,
-        "message": "Begin preparations for the annual budget review and gather financial documents by Monday.",
-        "message_date": "2024-11-08"
+        "message": "Schedule a team meeting by Tuesday and prepare a presentation by Thursday.",
+        "message_date": "2024-12-01"
     },
     {
         "thread_id": 2,
-        "message": "Finalize the budget review document and prepare a presentation by Thursday.",
-        "message_date": "2024-11-11"
-    },
-    {
-        "thread_id": 3,
-        "message": "Organize a team meeting to discuss the new project proposal and assign initial tasks.",
-        "message_date": "2024-11-07"
-    },
-    {
-        "thread_id": 1,
-        "message": "Add a section to the project report on recent market trends.",
-        "message_date": "2024-11-11"
+        "message": "Change the team meeting deadline to Wednesday and organize a brainstorming session by Friday.",
+        "message_date": "2024-12-02"
     }
 ]

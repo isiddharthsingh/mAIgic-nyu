@@ -2,51 +2,11 @@
   "threads": {
     "1": {
       "thread_id": 1,
-      "messages": [
-        {
-          "date": "2024-11-09",
-          "content": "Complete the project report by next Friday and schedule a team meeting by Tuesday.",
-          "notes": "Processed for tasks and deadlines"
-        },
-        {
-          "date": "2024-11-10",
-          "content": "Reschedule the team meeting to Wednesday and ensure the report includes financial analysis.",
-          "notes": "Processed for tasks and deadlines"
-        },
-        {
-          "date": "2024-11-11",
-          "content": "Add a section to the project report on recent market trends.",
-          "notes": "Processed for tasks and deadlines"
-        }
-      ],
-      "summary": "Updated on 2024-11-11 with latest message."
+      "context": "As of December 1, 2024, there are existing tasks that outline an additional workload. A new message was received requesting the completion of the project report by the upcoming Friday. However, on December 2, 2024, another message updated the deadline for the project report to the following Monday, indicating a change in timing for this task amidst other ongoing responsibilities."
     },
     "2": {
       "thread_id": 2,
-      "messages": [
-        {
-          "date": "2024-11-08",
-          "content": "Begin preparations for the annual budget review and gather financial documents by Monday.",
-          "notes": "Processed for tasks and deadlines"
-        },
-        {
-          "date": "2024-11-11",
-          "content": "Finalize the budget review document and prepare a presentation by Thursday.",
-          "notes": "Processed for tasks and deadlines"
-        }
-      ],
-      "summary": "Updated on 2024-11-11 with latest message."
-    },
-    "3": {
-      "thread_id": 3,
-      "messages": [
-        {
-          "date": "2024-11-07",
-          "content": "Organize a team meeting to discuss the new project proposal and assign initial tasks.",
-          "notes": "Processed for tasks and deadlines"
-        }
-      ],
-      "summary": "Updated on 2024-11-07 with latest message."
+      "context": "As of December 2, 2024, there are several tasks that need to be managed. A new message was received on December 1, 2024, requesting the scheduling of a team meeting by Tuesday and the preparation of a presentation by Thursday. However, the deadline for the team meeting has since been changed to Wednesday, and there is now an additional request to organize a brainstorming session by Friday. This adds urgency to efficiently organize the meeting, complete the presentation, and facilitate the brainstorming session within the specified timelines, all while managing existing tasks."
     }
   }
 }
