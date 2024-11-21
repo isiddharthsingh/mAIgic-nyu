@@ -24,6 +24,12 @@ def parse_tasks(tasks_content):
         }
     ]
     """
+
+    if tasks_content.startswith("```json"):
+        tasks_content = tasks_content[len("```json"):].strip()
+    if tasks_content.endswith("```"):
+        tasks_content = tasks_content[:-len("```")].strip()
+
     try:
         tasks = json.loads(tasks_content)
         if isinstance(tasks, list):

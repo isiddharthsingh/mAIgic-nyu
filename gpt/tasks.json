@@ -1,0 +1,40 @@
+{
+  "tasks": [
+    {
+      "task_id": 1,
+      "thread_id": 1,
+      "task": "Complete the project report by next Friday.",
+      "deadline": "2024-12-06"
+    },
+    {
+      "task_id": 2,
+      "thread_id": 1,
+      "task": "Update the deadline for the project report to next Monday.",
+      "deadline": "2024-12-09"
+    },
+    {
+      "task_id": 3,
+      "thread_id": 2,
+      "task": "Schedule a team meeting",
+      "deadline": "2024-12-03"
+    },
+    {
+      "task_id": 4,
+      "thread_id": 2,
+      "task": "Prepare a presentation",
+      "deadline": "2024-12-05"
+    },
+    {
+      "task_id": 5,
+      "thread_id": 2,
+      "task": "Change the team meeting deadline to Wednesday",
+      "deadline": "2024-12-04"
+    },
+    {
+      "task_id": 6,
+      "thread_id": 2,
+      "task": "Organize a brainstorming session by Friday",
+      "deadline": "2024-12-06"
+    }
+  ]
+}

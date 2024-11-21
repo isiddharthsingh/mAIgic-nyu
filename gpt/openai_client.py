@@ -49,17 +49,18 @@ class ChatGPTClient:
         Task:
         - Description: <task description>
         - Deadline: <specific date in YYYY-MM-DD format>
+        Dont remvove dates or deadline related to the task from the description. it can be in both deadline and description.
         
         Message date: {message_date}
         Message content: {message}
 
-        Provide the tasks in a JSON array format, where each task is an object with "description" and "deadline" keys.
+        The final response should be just a json. No introductory text or conclusion etc. Provide the tasks in a JSON array format, where each task is an object with "description" and "deadline" keys.
         Example:
         [
-            {
+            {{
                 "description": "Task description",
                 "deadline": "2024-12-31"
-            }
+            }}
         ]
         """
 
