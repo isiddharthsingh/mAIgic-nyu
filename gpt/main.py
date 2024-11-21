@@ -1,14 +1,11 @@
-# main.py
 import json
 from openai_client import ChatGPTClient
 from task_manager import TaskManager
 from context_manager import ContextManager
 import logging
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Initialize clients
 chat_client = ChatGPTClient()
 task_manager = TaskManager()
 context_manager = ContextManager()
@@ -50,29 +47,21 @@ def process_message(thread_id, message, message_date):
     3. Adds or updates tasks in the task manager.
     """
     try:
-        # Get current context for the thread
         current_context = context_manager.get_context(thread_id)
         
-        # Get existing tasks for the thread
         existing_tasks = task_manager.get_tasks_for_thread(thread_id)
         
-        # Get updated context from ChatGPT
         updated_context = chat_client.get_updated_context(current_context, message, message_date, existing_tasks=existing_tasks)
         
-        # Update context
         context_manager.add_or_update_context(thread_id, updated_context)
         logging.info(f"Context updated for thread {thread_id}.")
         
-        # Extract tasks from the new message
         tasks_content = chat_client.extract_tasks_from_message(message, message_date, existing_tasks=existing_tasks)
         
-        # Log the extracted tasks content for debugging
         logging.info(f"Extracted tasks content for thread {thread_id}: {tasks_content}")
         
-        # Parse tasks_content to get individual tasks
         tasks = parse_tasks(tasks_content)
         
-        # For each task, decide to add or update
         for task in tasks:
             description = task.get("description")
             deadline = task.get("deadline")
@@ -80,15 +69,12 @@ def process_message(thread_id, message, message_date):
                 logging.warning(f"Incomplete task information: {task}")
                 continue
             
-            # Check if the task already exists
             existing_task = task_manager.find_task(thread_id, description)
             if existing_task:
-                # Update the existing task's deadline if it's different
                 if existing_task["deadline"] != deadline:
                     task_manager.update_task(existing_task["task_id"], deadline=deadline)
                     logging.info(f"Updated task_id {existing_task['task_id']} with new deadline {deadline}.")
             else:
-                # Add as a new task
                 task_manager.add_task(thread_id, description, deadline)
                 logging.info(f"Added new task: {description} with deadline {deadline}.")
 
