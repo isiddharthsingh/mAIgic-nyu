@@ -5,5 +5,8 @@ from ._temp_math import (
     multiply as multiply,
     subtract as subtract,
 )
+<<<<<<< HEAD
 
 from .slackbot.slackbot import SlackApp as SlackApp
+=======
+>>>>>>> submission-team3
