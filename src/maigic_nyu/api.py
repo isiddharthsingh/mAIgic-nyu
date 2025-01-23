@@ -5,3 +5,5 @@ from ._temp_math import (
     multiply as multiply,
     subtract as subtract,
 )
+
+from .slackbot.slackbot import SlackApp as SlackApp
